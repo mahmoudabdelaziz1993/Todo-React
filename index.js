@@ -29,4 +29,14 @@ app.use(passport.session());
 app.use('/',indexRouter);
 app.use('/auth',authRouter);
 app.use('/api',apiRouter);
+if (process.env.NODE_ENV === "production"){
+    // express will serve production assets
+    app.use(express.static('client/build'));
+    // if it doesn't recognize the route 
+    const path = require('path');
+    app.get("*",(req,res)=>{
+        res.sendFile(path.resolve(__dirname,'client','build','index.html'));
+    });
+}
+
 app.listen(port, () => console.log(` app on port ${port}!`));
