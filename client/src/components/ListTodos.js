@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchTodos, checkTodo } from "../actions";
+import { fetchTodos, checkTodo ,deleteTodo} from "../actions";
 class ListTodos extends Component {
     componentDidMount() {
         this.props.fetchTodos();
@@ -18,7 +18,7 @@ class ListTodos extends Component {
                             <button  className="btn-floating btn-small green right" onClick={() => this.props.checkTodo(todo._id)}>
                                 <i className="material-icons"> done_all</i>
                             </button>
-                            <button style={{marginRight : '10px'}} className="btn-floating btn-small red right " onClick={() => this.props.checkTodo(todo._id)}>
+                            <button style={{marginRight : '10px'}} className="btn-floating btn-small red right " onClick={() => this.props.deleteTodo(todo._id)}>
                                 <i className="material-icons">delete</i>
                             </button>
                         </div>
@@ -39,4 +39,4 @@ class ListTodos extends Component {
 function mapStateToProps(state) {
     return { todos: state.todos };
 }
-export default connect(mapStateToProps, { fetchTodos, checkTodo })(ListTodos)
+export default connect(mapStateToProps, { fetchTodos, checkTodo , deleteTodo })(ListTodos)

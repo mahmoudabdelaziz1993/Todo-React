@@ -8,6 +8,7 @@ import Nav from './components/Nav';
 import Dashboard from './components/Dashboard';
 import CreateTodo from './components/CreateTodo';
 
+
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
@@ -20,7 +21,7 @@ class App extends Component {
           <Route exact path="/" component={Landing} />
           <Route exact path="/home" component={Dashboard} />
           <Route exact path="/todo/new" component={CreateTodo} />
-
+          
         </div>
       </BrowserRouter>
     );

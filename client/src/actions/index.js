@@ -19,3 +19,8 @@ export const checkTodo = (id)=>async dispatch =>{
     const res = await axios.get('/api/todo');
     dispatch({type:FETCH_TODOS , payload:res.data});
 }
+export const deleteTodo = (id)=>async dispatch =>{
+    await axios.delete(`/api/todo/${id}`);
+    const res = await axios.get('/api/todo');
+    dispatch({type:FETCH_TODOS , payload:res.data});
+}

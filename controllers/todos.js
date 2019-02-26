@@ -33,9 +33,15 @@ var updateTodo = async (id)=>{
         return res; 
     } catch (error) {
         return error;
-    }
-    
-    
+    }  
 };
 
-module.exports = { createNew , listTodos , updateTodo}
+var deleteTodo =async (id,owner)=>{
+    try {
+        const todo = await Todo.findByIdAndDelete({_id:id,owner:owner});
+        return todo;
+    } catch (error) {
+        return error;
+    }
+};
+module.exports = { createNew , listTodos , updateTodo,deleteTodo}
