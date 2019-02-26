@@ -4,7 +4,7 @@ const authenticated = require('../middleware/authenticated');
 const { createNew, listTodos,updateTodo } = require('../controllers/todos');
 
 //--------------- curent user -----------
-router.get('/current_user', authenticated, (req, res) => res.send(req.user));
+router.get('/current_user', (req, res) => res.send(req.user));
 //---------------- todo route collection -------------
 //create 
 router.post('/todo', authenticated, async (req, res) => {
@@ -16,13 +16,9 @@ router.post('/todo', authenticated, async (req, res) => {
     }
 });
 //list all todos
-router.get('/todo', authenticated, async (req, res) => {
-    try {
+router.get('/todo',authenticated, async (req, res) => {
         const todos = await listTodos(req.user);
-        return res.status(200).send(todos);
-    } catch (error) {
-        return res.status(400).send(error);
-    }
+        return res.send(todos);
 });
 //delete a todo
 router.put('/todo/:id',async (req, res) => {

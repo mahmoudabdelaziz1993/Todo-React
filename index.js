@@ -26,7 +26,7 @@ var SessionMiddleware = session({
 app.use(SessionMiddleware);
 app.use(passport.initialize());
 app.use(passport.session());
-app.use('/',indexRouter);
+//app.use('/',indexRouter);
 app.use('/auth',authRouter);
 app.use('/api',apiRouter);
 if (process.env.NODE_ENV === "production"){

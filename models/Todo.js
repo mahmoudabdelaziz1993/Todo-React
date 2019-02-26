@@ -8,7 +8,6 @@ const todoSchema = new Schema({
         type: Boolean,
         default: false
     },
-    date: Date,
     completedAt: {
         type: Number,
         default: null

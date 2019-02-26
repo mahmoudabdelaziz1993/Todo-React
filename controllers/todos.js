@@ -7,7 +7,7 @@ var createNew = async ({ title, description }, { _id }) => {
         title,
         description,
         owner: _id,
-        data: Date.now()
+        completedAt: Date.now()
     });
     try {
         const todo = await xtodo.save();
